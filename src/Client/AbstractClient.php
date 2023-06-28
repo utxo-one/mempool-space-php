@@ -14,18 +14,15 @@ use MempoolSpace\Http\Response;
 class AbstractClient
 {
     /** @var string */
-    private $apiKey;
-    /** @var string */
     private $baseUrl;
     /** @var string */
-    private $apiPath = '/api/v1/';
+    private $apiPath = '/api/';
     /** @var ClientInterface */
     private $httpClient;
 
-    public function __construct(string $baseUrl, string $apiKey, ClientInterface $client = null)
+    public function __construct(ClientInterface $client = null)
     {
-        $this->baseUrl = rtrim($baseUrl, '/');
-        $this->apiKey = $apiKey;
+        $this->baseUrl = 'https://mempool.space';
 
         // Use the $client parameter to use a custom cURL client, for example if you need to disable CURLOPT_SSL_VERIFYHOST and CURLOPT_SSL_VERIFYPEER
         if ($client === null) {
@@ -59,7 +56,6 @@ class AbstractClient
         return [
             'Accept' => 'application/json',
             'Content-Type' => 'application/json',
-            'Authorization' => 'Bearer ' . $this->getApiKey()
         ];
     }
 
