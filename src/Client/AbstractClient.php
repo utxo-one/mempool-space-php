@@ -20,9 +20,16 @@ class AbstractClient
     /** @var ClientInterface */
     private $httpClient;
 
-    public function __construct(ClientInterface $client = null)
+    private $network;
+
+    public function __construct(ClientInterface $client = null, $network = 'mainnet')
     {
-        $this->baseUrl = 'https://mempool.space';
+        if ($network == 'mainnet') {
+            $this->baseUrl = 'https://mempool.space';
+        } else {
+            $this->baseUrl = 'https://mempool.space/testnet';
+        }
+
 
         // Use the $client parameter to use a custom cURL client, for example if you need to disable CURLOPT_SSL_VERIFYHOST and CURLOPT_SSL_VERIFYPEER
         if ($client === null) {
