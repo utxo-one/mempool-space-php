@@ -1,0 +1,18 @@
+{
+    "name": "utxo-one/mempool-space-php",
+    "description": "A PHP SDK for the mempool.space api",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "UtxoOne\\MempoolSpacePhp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "utxo.one",
+            "email": "github@utxo.one"
+        }
+    ],
+    "require": {}
+}
